@@ -11,7 +11,7 @@ def run_script():
 
 def turn_on_desktop(mac_address, broadcast_address='255.255.255.255', port=9):
     # Convert the MAC address string to a byte array
-    bytes_mac = bytes.fromhex(mac_address.replace(':', ''))
+    bytes_mac = bytes.fromhex(mac_address.replace('-', ''))
 
     # Create the magic packet: 6 bytes of FF followed by the MAC address repeated 16 times
     magic_packet = b'\xFF' * 6 + bytes_mac * 16
@@ -24,4 +24,5 @@ def turn_on_desktop(mac_address, broadcast_address='255.255.255.255', port=9):
         sock.sendto(magic_packet, (broadcast_address, port))
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    turn_on_desktop('F0-2F-74-18-8E-56')
+    #app.run(host='0.0.0.0', port=5000)
