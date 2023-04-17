@@ -24,5 +24,4 @@ def turn_on_desktop(mac_address, broadcast_address='255.255.255.255', port=9):
         sock.sendto(magic_packet, (broadcast_address, port))
 
 if __name__ == '__main__':
-    turn_on_desktop('F0-2F-74-18-8E-56')
-    #app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000)
