@@ -23,6 +23,12 @@ def send_ok():
     response = make_response("Success", 200)
     return response
 
+@app.route('/simple-ok')
+def simple_ok():
+    response = make_response("Success", 200)
+    return response
+
+
 @app.route('/start-lightning-stream')
 def start_lightning_stream():
     global run_on_connect
