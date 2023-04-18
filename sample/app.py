@@ -16,15 +16,11 @@ def send_ok():
             if run_on_connect:
                 run_on_connect()
                 run_on_connect = None
+                break
         except requests.exceptions.ConnectionError:
             attempts -= 1
             time.sleep(0.5)
 
-    response = make_response("Success", 200)
-    return response
-
-@app.route('/simple-ok')
-def simple_ok():
     response = make_response("Success", 200)
     return response
 
