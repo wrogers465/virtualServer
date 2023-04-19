@@ -2,6 +2,7 @@ import requests
 import time
 from flask import Flask, make_response
 from lib import *
+import subprocess
 
 app = Flask(__name__)
 run_on_connect = None
@@ -36,6 +37,13 @@ def start_lightning_stream():
     except requests.exceptions.ConnectionError:
         send_magic_packet('F0-2F-74-18-8E-56')
         run_on_connect = start_stream
+
+@app.route('/update')
+def update():
+    try:
+        subprocess.run(["../update.sh"])
+    except Exception as e:
+        make_response(e, 500)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
