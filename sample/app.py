@@ -41,9 +41,9 @@ def start_lightning_stream():
 @app.route('/update')
 def update():
     try:
-        subprocess.run(["../update.sh"])
+        subprocess.run(["bash update.sh"])
     except Exception as e:
-        make_response(e, 500)
+        make_response(e, 200)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
