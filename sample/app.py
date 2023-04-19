@@ -16,6 +16,7 @@ def send_ok():
         while attempts > 0:
             try:
                 run_on_connect()
+                run_on_connect = None
                 break
             except requests.exceptions.ConnectionError:
                 attempts -= 1
