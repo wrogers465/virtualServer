@@ -11,6 +11,7 @@ start_stream = lambda: requests.get('http://192.168.0.13:5000/start-lightning-st
 
 @app.route('/send-ok')
 def send_ok():
+    global run_on_connect
     if run_on_connect:
         attempts = 90
         while attempts > 0:
