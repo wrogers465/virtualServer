@@ -14,11 +14,7 @@ start_stream = lambda: requests.get('http://192.168.0.13:5000/start-lightning-st
 @app.errorhandler(Exception)
 def handle_exception(e):
     # pass through HTTP errors
-    if isinstance(e, HTTPException):
-        return e
-
-    # now you're handling non-HTTP exceptions only
-    return render_template("500_generic.html", e=e), 500
+    make_response(e, 200)
 
 
 @app.route('/send-ok')
