@@ -1,20 +1,16 @@
+import os
 import requests
 import time
-from flask import Flask, make_response, render_template
-from lib import *
+
 import subprocess
-from werkzeug.exceptions import HTTPException
+from flask import Flask, make_response
+from lib import *
+
 
 app = Flask(__name__)
 run_on_connect = None
 
 start_stream = lambda: requests.get('http://192.168.0.13:5000/start-lightning-stream')
-
-
-@app.errorhandler(Exception)
-def handle_exception(e):
-    # pass through HTTP errors
-    make_response(e, 200)
 
 
 @app.route('/send-ok')
@@ -47,7 +43,8 @@ def start_lightning_stream():
 
 @app.route('/update')
 def update():
-    subprocess.run(["bash ../update.sh"])
+    print(os.getwd())
+    subprocess.run(["bash ~/Python/Projects/virtualServer/update.sh"])
 
 
 if __name__ == '__main__':
