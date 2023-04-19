@@ -6,11 +6,20 @@ from lib import *
 app = Flask(__name__)
 run_on_connect = None
 
+start_stream = lambda: requests.get('http://192.168.0.13:5000/start-lightning-stream')
+
 
 @app.route('/send-ok')
 def send_ok():
-    response = make_response("Success", 200)
-    return response
+    if run_on_connect:
+        attempts = 90
+        while attempts > 0:
+            try:
+                run_on_connect()
+                break
+            except requests.exceptions.ConnectionError:
+                attempts -= 1
+                time.sleep(0.5)
 
 
 @app.route('/run-instructions')
@@ -27,7 +36,6 @@ def run_instructions():
 @app.route('/start-lightning-stream')
 def start_lightning_stream():
     global run_on_connect
-    start_stream = lambda: requests.get('http://192.168.0.13:5000/start-lightning-stream')
     try:
         start_stream()
     except requests.exceptions.ConnectionError:
