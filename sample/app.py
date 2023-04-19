@@ -20,21 +20,10 @@ def send_ok():
             except requests.exceptions.ConnectionError:
                 attempts -= 1
                 time.sleep(0.5)
-                
+
     time.sleep(0.5)
     res = make_response("Success", 200)
     return res        
-
-
-@app.route('/run-instructions')
-def run_instructions():
-    global run_on_connect
-    if run_on_connect:
-        run_on_connect()
-        run_on_connect = None
-    else:
-        response = make_response("No instructions to run", 200)
-        return response
 
 
 @app.route('/start-lightning-stream')
