@@ -43,7 +43,6 @@ def start_lightning_stream():
 
 @app.route('/update')
 def update():
-    #subprocess.call(["/home/pi/Python/Projects/virtualServer/update.sh"])
     subprocess.call(["../update.sh"])
 
 
