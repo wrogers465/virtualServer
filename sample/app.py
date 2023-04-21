@@ -28,7 +28,7 @@ def send_ok():
                 time.sleep(0.5)
 
     time.sleep(0.5)
-    res = make_response("Success2", 200)
+    res = make_response("Success3", 200)
     return res        
 
 
