@@ -1,4 +1,3 @@
-import os
 import requests
 import time
 
@@ -28,7 +27,7 @@ def send_ok():
                 time.sleep(0.5)
 
     time.sleep(0.5)
-    res = make_response("Success4", 200)
+    res = make_response("Success", 200)
     return res        
 
 
