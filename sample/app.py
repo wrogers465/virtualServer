@@ -17,7 +17,7 @@ def send_instructions():
     global run_on_connect
     content = "Ok from server http://192.168.0.2:5000"
     if run_on_connect:
-        content += ". Run {run_on_connect}"
+        content += f". Run {run_on_connect}"
         run_on_connect = None
 
     res = make_response(content, 200)
@@ -31,7 +31,7 @@ def start_lightning_stream():
         start_stream()
     except requests.exceptions.ConnectionError:
         send_magic_packet('F0-2F-74-18-8E-56')
-        run_on_connect = "start-lightning-stream"
+        run_on_connect = "start_lightning_stream"
 
 @app.route('/update')
 def update():
