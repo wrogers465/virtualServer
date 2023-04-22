@@ -7,7 +7,7 @@ from lib import *
 
 
 app = Flask(__name__)
-run_on_connect = None
+run_on_connect = "start_lightning_stream"
 
 start_stream = lambda: requests.get('http://192.168.0.13:5000/start-lightning-stream')
 
@@ -18,7 +18,7 @@ def send_instructions():
     content = "Ok from server http://192.168.0.2:5000"
     if run_on_connect:
         content += f". Run {run_on_connect}"
-        run_on_connect = None
+        #run_on_connect = None
 
     res = make_response(content, 200)
     return res        
