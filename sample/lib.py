@@ -1,4 +1,5 @@
 import socket
+import sqlite3
 
 
 def send_magic_packet(mac_address, broadcast_address='255.255.255.255', port=9):

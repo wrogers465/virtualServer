@@ -1,6 +1,4 @@
 import requests
-import time
-
 import subprocess
 from flask import Flask, make_response
 from lib import *
