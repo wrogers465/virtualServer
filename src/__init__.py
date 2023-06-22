@@ -1,4 +1,5 @@
 import os
+import subprocess
 
 from flask import Flask, make_response
 
@@ -25,6 +26,10 @@ def create_app(test_config=None):
         content = "Ok from raspberrypi server"
         res = make_response(content, 200)
         return res
+    
+    @app.route('/update')
+    def update():
+        subprocess.call(["/home/pi/Python/Projects/virtualServer/update.sh"])
     
     return app
     
